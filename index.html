@@ -119,16 +119,19 @@
 
     <script>
       document.querySelectorAll('.accordion-button').forEach((button) => {
-        debugger;
+        
         button.addEventListener('click', () => {
           const content = button.nextElementSibling;
           const icon = button.querySelector('img')
           content.classList.toggle("hidden");
 
           // check if any other accordion is already open
-          document.querySelectorAll('.according-content').forEach((otherContent) => {
+          document.querySelectorAll('.accordion-content').forEach((otherContent) => {
             if (otherContent !== content && !otherContent.classList.contains('hidden')) {
-              otherContent.classList.add('hidden')
+              const button = otherContent.previousElementSibling;
+              const icon = button.querySelector('img')
+              icon.src = "./assets/images/icon-plus.svg"
+              otherContent.classList.toggle('hidden')
 
             }
           })
